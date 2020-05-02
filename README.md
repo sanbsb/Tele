@@ -1,6 +1,5 @@
 # Tele
-
-
+#First Setup database in SQL Server  
 
 AUTHENTICATION AND AUTHORIZATION PROCESS MANAGEMENT
 Have to design a portal for below roles

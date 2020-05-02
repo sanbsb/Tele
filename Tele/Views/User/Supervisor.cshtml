@@ -1,0 +1,70 @@
+﻿@model Tele.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Supervisor</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <script type="text/javascript">
+        function edit(username) {
+            var username = username
+            window.location.href = "/User/EditUserForSupervisor?UserName=" + username
+        }
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+
+        if (Model != null)
+        {
+            <div>
+                <table cellpadding="2" border="0" class="table table-striped" cellspacing="0">
+                    <tr class="tblstyle-blu">
+                        <th><span class="left-line">&nbsp;</span>Full Name</th>
+                        <th><span class="left-line">&nbsp;</span>Email</th>
+                        <th><span class="left-line">&nbsp;</span>Phone</th>
+                        <th><span class="left-line">&nbsp;</span>Addess</th>
+                        <th><span class="left-line">&nbsp;</span>Status</th>
+                        <th>&nbsp;</th>
+                        @*<th><span class="left-line">&nbsp;</span>Role</th>*@
+                        <th>&nbsp; </th>
+                    </tr>
+
+                    @foreach (var item in Model.userList)
+                    {
+                        var cls = "";
+                        <tr class="@cls">
+                            <td>
+                                @item.UserName
+
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                @item.Phone
+                            </td>
+                            <td>@item.Address</td>
+                            <td>@item.Status</td>
+                            @*<td><a href="/User/EditUser/@item.UserName">Edit</a></td>*@
+                            <td><input type="button" name="submit" class="btn btn-info btn-md" onclick="return edit('@item.UserName')" value="Edit"></td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        }
+
+    }
+</body>
+</html>
